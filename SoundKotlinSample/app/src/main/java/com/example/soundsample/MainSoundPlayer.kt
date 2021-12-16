@@ -10,8 +10,8 @@ import android.util.Log
 /**
  * MainActivityで使用するサウンドクラス.
  */
-class MainSoundPlayer(context: Context?) : DefaultLifecycleObserver {
-    private val soundPool: SoundPool?
+class MainSoundPlayer(context: Context) : DefaultLifecycleObserver {
+    private var soundPool: SoundPool
     private val curtainSoundId: Int
     private var curtainStreamId = 0
     private val windowSoundId: Int
@@ -19,14 +19,14 @@ class MainSoundPlayer(context: Context?) : DefaultLifecycleObserver {
 
     // 音声を再生する
     fun playCurtainSound() {
-        curtainStreamId = soundPool!!.play(
+        curtainStreamId = soundPool.play(
             curtainSoundId, LEFT_VOLUME_VALUE, RIGHT_VOLUME_VALUE,
             PRIORITY_1, SOUND_LOOP_MODE_NO_LOOP, SOUND_PLAY_BACK_RATE
         )
     }
 
     fun playWindowSound() {
-        windowStreamId = soundPool!!.play(
+        windowStreamId = soundPool.play(
             windowSoundId, LEFT_VOLUME_VALUE, RIGHT_VOLUME_VALUE,
             PRIORITY_1, SOUND_LOOP_MODE_NO_LOOP, SOUND_PLAY_BACK_RATE
         )
@@ -34,31 +34,28 @@ class MainSoundPlayer(context: Context?) : DefaultLifecycleObserver {
 
     // 音声を停止する
     fun stopCurtainSound() {
-        soundPool!!.stop(curtainStreamId)
+        soundPool.stop(curtainStreamId)
     }
 
     fun stopWindowSound() {
-        soundPool!!.stop(windowStreamId)
+        soundPool.stop(windowStreamId)
     }
 
     // 画面表示時に呼ばれる
     override fun onResume(owner: LifecycleOwner) {
         Log.d(LOG_TAG, "call autoResume")
-        if (soundPool == null) return
         soundPool.autoResume() // soundPool.autoPause()したときにアクティブだったすべての音声ファイルを再生する.
     }
 
     // 画面非表示時に呼ばれる
     override fun onPause(owner: LifecycleOwner) {
         Log.d(LOG_TAG, "call autoPause")
-        if (soundPool == null) return
         soundPool.autoPause() // 全ての再生中の音声ファイルを停止する.
     }
 
     // 画面終了時に呼ばれる
     override fun onDestroy(owner: LifecycleOwner) {
         Log.d(LOG_TAG, "call release soundPool: $soundPool")
-        if (soundPool == null) return
         soundPool.release() // SoundPoolによって使用されているすべてのメモリとネイティブリソースを解放する.
     }
 
