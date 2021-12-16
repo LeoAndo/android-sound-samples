@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnCurtainSoundPlay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="play curtain Sound" />
+
+    <Button
+        android:id="@+id/btnCurtainSoundStop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="stop curtain Sound" />
+
+    <Button
+        android:id="@+id/btnWindowoundPlay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="play window Sound" />
+
+    <Button
+        android:id="@+id/btnWindowSoundStop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="stop window Sound" />
+</LinearLayout>
