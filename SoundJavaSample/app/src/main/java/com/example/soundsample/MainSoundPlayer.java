@@ -41,7 +41,7 @@ public class MainSoundPlayer implements DefaultLifecycleObserver {
         windowSoundId = soundPool.load(context, R.raw.small_window, PRIORITY_1);
     }
 
-    // 音声を再生する
+    // 効果音を再生する
     public void playCurtainSound() {
         curtainStreamId = soundPool.play(
                 curtainSoundId, LEFT_VOLUME_VALUE, RIGHT_VOLUME_VALUE,
@@ -54,7 +54,7 @@ public class MainSoundPlayer implements DefaultLifecycleObserver {
                 PRIORITY_1, SOUND_LOOP_MODE_NO_LOOP, SOUND_PLAY_BACK_RATE);
     }
 
-    // 音声を停止する
+    // 効果音を停止する
     public void stopCurtainSound() {
         soundPool.stop(curtainStreamId);
     }
