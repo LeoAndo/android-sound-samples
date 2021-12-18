@@ -17,7 +17,7 @@ class MainSoundPlayer(context: Context) : DefaultLifecycleObserver {
     private val windowSoundId: Int
     private var windowStreamId = 0
 
-    // 音声を再生する
+    // 効果音を再生する
     fun playCurtainSound() {
         curtainStreamId = soundPool.play(
             curtainSoundId, LEFT_VOLUME_VALUE, RIGHT_VOLUME_VALUE,
@@ -32,7 +32,7 @@ class MainSoundPlayer(context: Context) : DefaultLifecycleObserver {
         )
     }
 
-    // 音声を停止する
+    // 効果音を停止する
     fun stopCurtainSound() {
         soundPool.stop(curtainStreamId)
     }
